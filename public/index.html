@@ -1,0 +1,355 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hostel Chore Roulette | Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <div>
+                <h2>Chore<span>Mate</span></h2>
+                <small>HOSTEL LIFE, SIMPLIFIED</small>
+            </div>
+        </div>
+
+        <div class="nav-label">MENU</div>
+
+        <nav class="navigation">
+            <a href="#dashboard" class="nav-item active">⌂ <span>Dashboard</span></a>
+            <a href="#roommates" class="nav-item">♙ <span>Roommates</span></a>
+            <a href="#chores" class="nav-item">☷ <span>Chore Manager</span></a>
+            <a href="#roulette" class="nav-item">◉ <span>Roulette Wheel</span></a>
+            <a href="#history" class="nav-item">◷ <span>History</span></a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <div class="tip-card">
+                <div class="tip-icon">💡</div>
+                <strong>Roommate tip</strong>
+                <p>Sharing responsibilities makes hostel life happier!</p>
+            </div>
+
+            <div class="profile">
+                <div class="avatar">H</div>
+                <div>
+                    <strong>Hostel Admin</strong>
+                    <small>Room Manager</small>
+                </div>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content" id="dashboard">
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+            <div>
+                <p class="breadcrumb">Workspace / Dashboard</p>
+                <h2>Hostel Dashboard</h2>
+            </div>
+
+            <div class="topbar-right">
+                <span class="online-status">
+                    <span class="online-dot"></span>
+                    All systems active
+                </span>
+                <div class="top-avatar">H</div>
+            </div>
+        </header>
+
+
+        <!-- WELCOME SECTION -->
+
+        <section class="welcome-section">
+
+            <div>
+                <span class="welcome-tag">✦ YOUR HOSTEL WORKSPACE</span>
+
+                <h1>Hey there! 👋<br>
+                    Let's get things <span>done.</span>
+                </h1>
+
+                <p>
+                    Keep your hostel organized, share the workload,
+                    and make everyday chores a little more fun.
+                </p>
+            </div>
+
+            <div class="welcome-illustration">
+                <div class="illustration-circle">🧹</div>
+                <div class="floating-icon icon-one">✨</div>
+                <div class="floating-icon icon-two">🏠</div>
+                <div class="floating-icon icon-three">✓</div>
+            </div>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card purple-stat">
+                <div class="stat-top">
+                    <span>Total Roommates</span>
+                    <span class="stat-icon">👥</span>
+                </div>
+                <h2 id="roommateCount">0</h2>
+                <small>People in your hostel crew</small>
+            </div>
+
+            <div class="stat-card orange-stat">
+                <div class="stat-top">
+                    <span>Total Chores</span>
+                    <span class="stat-icon">🧹</span>
+                </div>
+                <h2 id="choreCount">0</h2>
+                <small>Tasks added to your list</small>
+            </div>
+
+            <div class="stat-card green-stat">
+                <div class="stat-top">
+                    <span>Completed</span>
+                    <span class="stat-icon">✓</span>
+                </div>
+                <h2 id="completedCount">0</h2>
+                <small>Chores completed successfully</small>
+            </div>
+
+            <div class="stat-card blue-stat">
+                <div class="stat-top">
+                    <span>Pending Tasks</span>
+                    <span class="stat-icon">◷</span>
+                </div>
+                <h2 id="pendingCount">0</h2>
+                <small>Tasks waiting to be completed</small>
+            </div>
+
+        </section>
+
+
+        <!-- MAIN GRID -->
+
+        <section class="content-grid">
+
+            <!-- ROOMMATES -->
+
+            <div class="dashboard-card" id="roommates">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-subtitle">YOUR HOSTEL CREW</span>
+                        <h2>Roommates</h2>
+                    </div>
+                    <span class="count-badge" id="roommateBadge">0 Members</span>
+                </div>
+
+                <div class="input-group">
+                    <input
+                        id="roommateName"
+                        placeholder="Enter roommate name..."
+                        maxlength="50"
+                    >
+
+                    <button onclick="addRoommate()" class="add-button">
+                        + Add
+                    </button>
+                </div>
+
+                <div id="roommateList" class="roommate-list">
+                    <div class="empty-state">
+                        <span>👥</span>
+                        <p>No roommates added yet.</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- CHORES -->
+
+            <div class="dashboard-card" id="chores">
+
+                <div class="section-heading">
+                    <div>
+                        <span class="section-subtitle">DAILY RESPONSIBILITIES</span>
+                        <h2>Chore Manager</h2>
+                    </div>
+                    <span class="count-badge" id="choreBadge">0 Tasks</span>
+                </div>
+
+                <input
+                    id="choreTitle"
+                    placeholder="What needs to be done?"
+                >
+
+                <select id="frequency">
+                    <option value="Daily">Daily chore</option>
+                    <option value="Weekly">Weekly chore</option>
+                    <option value="One-time">One-time chore</option>
+                </select>
+
+                <button onclick="addChore()" class="add-button full-button">
+                    + Create New Chore
+                </button>
+
+                <div id="choreList" class="chore-list">
+                    <div class="empty-state">
+                        <span>🧹</span>
+                        <p>No chores created yet.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ROULETTE -->
+
+        <section class="roulette-section" id="roulette">
+
+            <div class="roulette-info">
+
+                <span class="section-subtitle">LET FATE DECIDE</span>
+
+                <h2>Who's on duty today? 🎯</h2>
+
+                <p>
+                    No arguments, no confusion!
+                    Spin the wheel and let fairness choose
+                    your next responsible roommate.
+                </p>
+
+                <div class="roulette-select">
+                    <label for="choreSelect">SELECT A CHORE</label>
+
+                    <select id="choreSelect">
+                        <option value="">Select a chore</option>
+                    </select>
+                </div>
+
+                <button
+                    id="spinButton"
+                    onclick="spinWheel()"
+                    class="spin-button"
+                >
+                    ✦ Spin the Roulette
+                </button>
+
+                <div class="fairness-text">
+                    🛡️ Fairness mode enabled
+                </div>
+
+                <h3 id="result" class="result-message">
+                    Your next assignment awaits!
+                </h3>
+
+            </div>
+
+
+            <div class="wheel-container">
+
+                <div class="wheel-pointer"></div>
+
+                <div id="wheel" class="wheel">
+                    <div class="wheel-center">
+                        <span>✦</span>
+                        <small>SPIN</small>
+                    </div>
+                </div>
+
+                <div class="wheel-caption">
+                    <span class="caption-dot"></span>
+                    THE CHORE WHEEL
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ASSIGNMENT HISTORY -->
+
+        <section class="dashboard-card history-section" id="history">
+
+            <div class="section-heading">
+
+                <div>
+                    <span class="section-subtitle">TRACK YOUR PROGRESS</span>
+                    <h2>Assignment History</h2>
+                </div>
+
+                <span class="count-badge" id="pendingPill">
+                    0 PENDING
+                </span>
+
+            </div>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>ROOMMATE</th>
+                            <th>CHORE</th>
+                            <th>ASSIGNED DATE</th>
+                            <th>STATUS</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="history">
+
+                        <tr>
+                            <td colspan="5" class="empty-table">
+                                No assignments yet. Spin the wheel to get started!
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            <p>Made with ✦ for happier hostel living.</p>
+        </footer>
+
+    </main>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
